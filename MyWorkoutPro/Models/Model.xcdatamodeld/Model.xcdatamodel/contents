@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C205" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CardioExerciseSet" representedClassName=".CardioExerciseSet" syncable="YES">
+        <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="workoutexercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorkoutExercise" inverseName="cardioexercise" inverseEntity="WorkoutExercise" syncable="YES"/>
+    </entity>
+    <entity name="Exercise" representedClassName=".Exercise" syncable="YES">
+        <attribute name="distance" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="resistance" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="StrengthExerciseSet" representedClassName=".StrengthExerciseSet" syncable="YES">
+        <attribute name="resistance" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="workoutexercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorkoutExercise" inverseName="strengthexercises" inverseEntity="WorkoutExercise" syncable="YES"/>
+    </entity>
+    <entity name="Workout" representedClassName=".Workout" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="workoutexercises" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="WorkoutExercise" inverseName="workout" inverseEntity="WorkoutExercise" syncable="YES"/>
+    </entity>
+    <entity name="WorkoutExercise" representedClassName=".WorkoutExercise" syncable="YES">
+        <attribute name="distance" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="resistance" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="cardioexercise" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CardioExerciseSet" inverseName="workoutexercise" inverseEntity="CardioExerciseSet" syncable="YES"/>
+        <relationship name="strengthexercises" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="StrengthExerciseSet" inverseName="workoutexercise" inverseEntity="StrengthExerciseSet" syncable="YES"/>
+        <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="workoutexercises" inverseEntity="Workout" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CardioExerciseSet" positionX="-45" positionY="63" width="128" height="90"/>
+        <element name="Exercise" positionX="-54" positionY="81" width="128" height="135"/>
+        <element name="StrengthExerciseSet" positionX="-36" positionY="72" width="128" height="90"/>
+        <element name="Workout" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="WorkoutExercise" positionX="-54" positionY="36" width="128" height="180"/>
+    </elements>
+</model>
